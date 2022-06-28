@@ -23,8 +23,10 @@ const Benchmark = (name, func) => {
 	for (let i = 0; i < iterations; i++) {
 		func();
 	};
-	console.log(`${name} took ${Date.now() - startTime} milliseconds`);
+	// console.log(`${name} took ${Date.now() - startTime} milliseconds`);
+	return Date.now() - startTime;
 };
 
-Benchmark("Function 1", () => CodeToCompare(a, b, 9));
-Benchmark("Function 2", () => MyCode(a, b, 9));
+const f1 = Benchmark("Function 1", () => CodeToCompare(a, b, 9));
+const f2 = Benchmark("Function 2", () => MyCode(a, b, 9));
+console.log({ f1, f2 }, f1 / f2);
