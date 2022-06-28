@@ -1,6 +1,6 @@
 # findSums Performance Test
 
-Filtering the arrays in two nested loops increase the performance up to 6 times.
+Filtering the arrays in two nested loops increase the performance up to 7 times.
 
 ## Metrics
 
