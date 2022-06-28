@@ -1,32 +1,25 @@
-const expectedNumber = 99;
+// constants
+const expectedNumber = 50;
+const iterations = 10000;
 
 // import codes
 const { a, b } = require("./arrays");
 const CodeToCompare = require("./code-to-compare").findSums;
 const MyCode = require("./my-code").findSums;
 
-// test
-const f1Result = CodeToCompare(a, b, expectedNumber);
-const f2Result = MyCode(a, b, expectedNumber);
-
-if (JSON.stringify(f1Result) === JSON.stringify(f2Result)) {
-	console.log("Test Passes");
-} else {
-	console.log("Test Fails");
-}
-
 // benchmark
-const iterations = 10000;
-
 const Benchmark = (name, func) => {
 	const startTime = Date.now();
 	for (let i = 0; i < iterations; i++) {
 		func();
 	};
-	// console.log(`${name} took ${Date.now() - startTime} milliseconds`);
 	return Date.now() - startTime;
 };
 
-const f1 = Benchmark("Function 1", () => CodeToCompare(a, b, 9));
-const f2 = Benchmark("Function 2", () => MyCode(a, b, 9));
-console.log({ f1, f2 }, f1 / f2);
+for (let i = 0; i < 5; i++) {
+	const regularTime = Benchmark("Function 1", () => CodeToCompare(a, b, expectedNumber));
+	const optimizedTime = Benchmark("Function 2", () => MyCode(a, b, expectedNumber));
+	console.log(`Regular algorithm took ${regularTime} milliseconds to run.`);
+	console.log(`Optimized algorithm took ${optimizedTime} milliseconds to run.`);
+	console.log(`Difference: ${(regularTime / optimizedTime).toFixed(2)}x`);
+}
