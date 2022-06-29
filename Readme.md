@@ -10,7 +10,11 @@ Filtering the arrays in two nested loops increase the performance up to 7 times.
 | 50              | 690ms               | 401ms (1.72x)         | 158ms (4.36x)  |
 | 80              | 785ms               | 730ms (1.07x)         | 287ms (2.73x)  |
 
-> Tests ran with 5 different arrays and for 5000 iterations.
+> Tests ran with 5 different array sets and for 5000 iterations each.
+
+> Array lenghts are between 100 and 200.
+
+> Elements in the array are randomly generated between 0 and 100.
 
 ## Run
 
