@@ -3,8 +3,8 @@ const expectedNumber = 50;
 const iterations = 10000;
 
 // import codes
-const { a, b } = require("./arrays");
-const algorithms = require("./algorithms").algorithms;
+const { GetRandomArrays } = require("./arrays");
+const { algorithms } = require("./algorithms");
 
 // test
 const testA = [1,2,3,6,1];
@@ -30,6 +30,7 @@ const Benchmark = func => {
 	return Date.now() - startTime;
 };
 
+const [a,b] = GetRandomArrays();
 for (const key of Object.keys(algorithms)) {
 	const time = Benchmark(() => algorithms[key](a, b, expectedNumber));
 	console.log(`${key} took ${time} milliseconds`);
